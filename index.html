@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no" />
+	<script>
+	(function () {
+   	 	var b = document.documentElement,
+    	a = function () {
+        	var a = b.getBoundingClientRect().width;
+       	 	b.style.fontSize = (100/750) * (a >= 750 ? 750 : a) + "px"
+    	}, c = null;
+    	window.addEventListener("resize", function () {
+        	clearTimeout(c);
+        	c = setTimeout(a, 300)
+    	});
+    	a()
+		})();
+	</script>
+	<script src="static/js/iconfont.js"></script>
+   <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery-qrcode-0.14.0.min.js"></script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			border:0;
+			font-family: "微软雅黑";
+		}
+		html{
+			font-size: 100px;
+		}
+		body{
+			background-color: #eee;
+		}
+		.img-response{
+			width: 100%;
+			height: auto;
+		}
+		.photo{
+			width: 7.5rem;
+			height: 3rem;
+			overflow: hidden;
+		}
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
+		}
+		.clearfix:after{
+			content:"";
+			display: block;
+			clear: both;
+		}
+		.photo{
+			position: relative; 
+			margin-bottom: 0.2rem;
+		}
+		.photo-name{
+			position: absolute;
+			left: 0.2rem;
+			bottom: 0.4rem;
+		}
+		.photo .icon1{
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+		.photo .icon1 img {
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: 0.75rem;
+		}
+		.photo .name{
+			color: #fff;
+			margin: 0.2rem 0 0 0.2rem;
+		}
+		.name h3{
+			font-size: 0.3rem;
+		}
+		.name p{
+			font-size: 0.3rem;
+		}
+		.all{
+			background-color: #eee;
+			padding-bottom: 1rem;
+		}
+		.info {
+			background-color: #fff; 
+			margin-top: 20px;
+			width: 7.5rem;
+		}
+		.info p{
+			color: #666;
+			line-height: 0.4rem;
+			font-size: 0.3rem;
+			margin: 0 10px;
+			padding: 10px;
+			border-bottom: 1px solid #eee;
+		}
+		.info p a{
+			margin-left: 20px;
+			color: #333;
+			text-decoration: none;
+		}
+		.info .last{
+			border-bottom: 0;
+		}
+		.all .btn{
+			width: 7.5rem;
+			height: 1rem;
+			background-color: #fff;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+		#discrib{
+		    padding-bottom: 1rem;
+		}
+		@media (min-width: 750px){
+			.all div{
+				margin:0 auto;
+			}
+			.btn{
+				left: 50% !important;
+				margin-left: -3.75rem !important;
+			}
+			.info p{
+				font-size: 18px !important;
+			}
+		}
+		.all .btn #btn{
+			width: 6.75rem;
+			height: 0.7rem;
+			position: absolute;
+			left: 0.375rem;
+			bottom: 0.15rem;
+			background-color: #0080b1;
+			color: #fff;
+			font-size: 0.3rem;
+			border-radius: 6px;
+			letter-spacing: 1px;
+			outline: none;
+		}
+		@media (max-width: 800px){
+			.erwm{
+				display: none;
+			}
+		}
+		.erwm{
+			width: 1.5rem;
+			height: 1.5rem;
+			padding: 0.1rem 0.1rem 0.3rem;
+			position: fixed;
+			right: 20px;
+			top: 20px;
+			background-color: #fff;
+		}
+		.erwm p{
+			font-size: 0.15rem;
+			position: absolute;
+			bottom: 0.1rem;
+			left: 0.85rem;
+			margin-left: -0.375rem;
+		}
+		#tips{
+			font-size: 0.3rem;
+		}
+		.qrBox{
+			position: fixed;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(0,0,0,.8);
+			display: none;
+		}
+		.qr{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -150px;
+			margin-left: -150px;
+		}
+		#tips{
+			color: #fff;
+		}
+		.icon {
+		   width: 1em; height: 1em;
+		   vertical-align: -0.15em;
+		   fill: #fff;
+		   overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<!-- photo -->
+	<div class="all" id="all">
+		<div class="photo">
+			<img src="building.jpg" alt="" class="img-response">
+			<div class="photo-name clearfix">
+				<span class="icon1 left"><img src="ma.jpg" alt=""></span>
+				<div class="name right">
+					<h3><span id="name">仲崇海</span></h3>
+					<p id="title">总经理</p>
+					<p id="org">上海医略营销策划有限公司</p>
+				</div>
+			</div>
+		</div>
+		<div class="info">
+			<p>手机<a href="tel:18602110099" id="cell">18602110099</a></p>
+			<p>电话<a href="tel:18602110099" id="home">021-60835266</a></p>
+			<p>热线<a href="tel:18602110099"
+			id="retel">400-000-0000</a></p>
+			<p>传真<a id="fix">021-60538277</a></p>
+			<p class="last">邮箱<a href="mailto:zch@yelot.com" id="email">zch@yelot.com</a></p>
+		</div>
+		<div class="info">
+			<p>主页<a href="" id="url">www.yelot.com</a></p>
+			<p>微信<a id="wechat">18602110099</a></p>
+			<p class="last">QQ<a href="" id="qq">18602110099</a></p>
+		</div>
+		<div class="info">
+			<p class="last">地址<a href="" id="adr">上海市明珠路838号恒润大厦12楼A<img src="/static/img/map.png" alt="" style="width: 0.5rem;height: 0.4rem;float: right;"></a></p>
+		</div>
+		<div class="info">
+			<p class="last" id="discrib">说明<a>效果化品牌服务</a></p>
+		</div>
+		<div class="btn">
+			<button type="button" id="btn">保存到通讯录</button>
+		</div>
+		<div class="erwm">
+			<script src="static/js/scripts.js"></script>
+			<div id="erwm"></div>
+			<p align="center">手机扫一扫</p>
+		</div>
+	</div>
+	<div class="qrBox" align="center">
+		<div class="qr">
+			<div id="qrcode" align="center"></div>	
+			<div id="tips" align="center">长按识别二维码</div>
+			<svg class="icon" aria-hidden="true" onclick="clo()">
+			  	<use xlink:href="#icon-guanbi"></use>
+			</svg>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var x=0;
+	function getLocation(){
+		if (navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
+	}
+	function showPosition(position){
+        x= "http://apis.map.qq.com/uri/v1/routeplan?type=drive&from=我的位置&fromcoord="+position.coords.latitude + "," + position.coords.longitude+"&to=上海市明珠路838号恒润大厦12A&tocoord=31.182890,121.264690&policy=1&referer=myapp";
+        $("#adr").attr("href",x);
+    }
+    getLocation();
+	$(".info p a").each(function(){
+		if($.trim($(this).html())==""){
+			$(this).parent().css({display:"none"});
+		}	
+	})
+	function isWeiXin(){ 
+		var ua = window.navigator.userAgent.toLowerCase(); 
+		if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+			return true; 
+		}else{ 
+			return false; 
+		} 
+	}
+	function isPC(){
+		var ua2 = window.navigator.userAgent.toLowerCase(); 
+		var Agents = ["android", "iphone","symbianOS", "windows phone","ipad", "ipod"];
+		var flag = true;
+		for (var v = 0; v < Agents.length; v++) {
+	        if (ua2.indexOf(Agents[v]) > 0) {
+	            flag=false;
+	            break;
+	        }
+	    }
+	    return flag;
+	}
+	if(isWeiXin()){ 
+		function clo(){
+			$(".qrBox").css({display:"none"});
+		}
+		function createvcf() {
+			$(".qrBox").css({display:"block"});
+	      	var a,
+		      c = $("#name").html().replaceAll(" ", ""),
+		      d = $("#title").html().replaceAll(" ", ""),
+		      e = $("#adr").html().replaceAll(" ", ""),
+		      f = $("#org").html().replaceAll(" ", ""),
+		      g = $("#cell").html().replaceAll(" ", ""),
+		      h = $("#home").html().replaceAll(" ", ""),
+		      i = $("#url").html().replaceAll(" ", ""),
+		      j = $("#email").html().replaceAll(" ", "");
+		      e=e.slice(0,e.search("<img"));
+		      a = "BEGIN:VCARD", a += "\r\nN:"+ c, d && (a += "\r\nTITLE:" + d), e && (a += "\r\nADR;WORK:;;" + e + ";;;;"), f && (a += "\r\nORG:" + f), g && (a += "\r\nTEL;CELL,VOICE:" + g), h && (a += "\r\nTEL;WORK,VOICE:" + h), i && (a += "\r\nURL;WORK:" + i), j && (a += "\r\nEMAIL;INTERNET,HOME:" + j), a += "\r\nEND:VCARD", $("#qrcode").empty().qrcode({
+		        render: "image",
+		        ecLevel: "0" == $("#mode").val() ? "L": "H",
+		        size: 300,
+		        background: "#fff",
+		        fill: $("#fill").val(),
+		        radius: $("#radius").val(),
+		        mode: 1 * $("#mode").val(),
+		        fontcolor: $("#fontcolor").val(),
+		        label: c,
+		        text: a
+	      })
+	    }
+	    String.prototype.replaceAll = function(a, b) {
+	      return this.replace(new RegExp(a.replace(/([\(\)\[\]\{\}\^\$\+\-\*\?\.\"\'\|\/\\])/g, "\\$1"), "ig"), b)
+	    };
+		document.getElementById('btn').onclick=function(){
+			createvcf();
+		}
+	}else if(isPC()){
+		document.getElementById("btn").onclick=function(){
+			var a,c = $("#name").html(),
+				    d = $("#title").html(),
+				    e = $("#adr").html(),
+				    f = $("#org").html(),
+				    g = $("#cell").html(),
+				    h = $("#home").html(),
+				    i = $("#url").html(),
+					id=0,
+				    j = $("#email").html();
+				    e=e.slice(0,e.search("<img"));
+			$.ajax({
+				type:"POST",
+				url:"../1.php",
+				data:{'id':id,'name':c,'title':d,'adr':e,'org':f,'cell':g,'home':h,'url':i,'email':j},
+				success:function(){
+					window.location.href="index.vcf";
+				}
+			})
+		}
+	}		
+	else{
+		$("#btn").html("请使用微信保存至通讯录"); 
+	}
+</script>
+</html>
